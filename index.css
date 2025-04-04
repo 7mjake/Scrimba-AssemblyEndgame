@@ -19,6 +19,8 @@ main {
     flex-direction: column;
     gap: 32px;
     height: 100%;
+    align-items: center;
+    max-width: 480px;
 }
 
 button {
@@ -26,10 +28,36 @@ button {
     font-weight: 600;
 }
 
+.header p {
+    color: #8E8E8E;
+}
+
+.message-banner {
+    border-radius: 4px;
+    padding: 24px 80px;
+    display: flex;
+}
+
+.message-wrong {
+    border: 1px dashed #323232;
+    background: #7A5EA7;
+}
+
+.message-win {
+    background: #10A95B; 
+}
+
+.message-lose {  
+    background: #BA2A2A;
+}
+
 .language-container {
     display: flex;
     gap: 4.5px;
     font-weight: 700;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 350px;
 }
 
 .language-chip {
@@ -38,6 +66,12 @@ button {
     color: white;
 }
 
+.language-dead {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .guess-container {
     display: flex;

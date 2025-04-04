@@ -1,3 +1,7 @@
 export default function MessageBanner() {
-    return <h2>Farewell HTML & CSS 🫡 </h2>
+
+    const message = "Farewell HTML & CSS 🫡"
+    const messageType = "message-wrong"
+
+    return <h2 className={"message-banner message-wrong"}>{message}</h2>
 }
