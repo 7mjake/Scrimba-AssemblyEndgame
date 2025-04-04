@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Hanken Grotesk", Arial, sans-serif;
+    background-color: #262626;
+    color: #D9D9D9;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 100%;
+}
+
+button {
+    font-family: "Hanken Grotesk", Arial, sans-serif;
+    font-weight: 600;
+}
+
+.language-container {
+    display: flex;
+    gap: 4.5px;
+    font-weight: 700;
+}
+
+.language-chip {
+    border-radius: 3px;
+    padding: 4.5px;
+    color: white;
+}
+
+
+.guess-container {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+}
+
+.guess-square {
+    display: inline-flex;
+    background: #323232;
+    border-bottom: 1px solid #F9F4DA;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    font-family: Hanken Grotesk;
+    font-weight: 700;
+    font-size: 18px;
+
+}
+
+.keyboard-container {
+    display: flex;
+    margin: 0px auto;
+    gap: 8px;
+    width: calc((40px * 10) + (8px * 9));
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.key {
+    width: 40px;
+    height: 40px;
+    background-color: #FCBA29;
+    border: 1px solid rgba(215, 215, 215, 1);
+    border-radius: 4px;
+}
+
+.key-guessed-wrong {
+    background: #EC5D49;
+}
+
+.key-guessed-right {
+    background: #10A95B;
+}
