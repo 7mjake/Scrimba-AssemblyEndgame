@@ -1,5 +1,6 @@
 import React from "react"
 import { v4 as uuid } from 'uuid'
+import { generate, count } from "random-words";
 
 import Header from "./Components/Header"
 import MessageBanner from "./Components/MessageBanner"
@@ -24,8 +25,6 @@ export default function Hangman() {
         { title: "Assembly", isDead: false, id: 8}
     ]);
 
-    const mysteryWordBase = "Testing"
-    const [mysteryWord, setMysteryWord] = React.useState(mysteryWordBase.toUpperCase().split('').map(char => ({letter: char, revealed: true, id: uuid()})))
     const [wrongGuesses, setWrongGuesses] = React.useState(0)
     const [gameOver, setGameOver] = React.useState(false)
 
@@ -66,6 +65,48 @@ export default function Hangman() {
         if (mysteryWord.map(char => char.letter).includes(letterGuess)) {
                 setKeys(prevKeys => {
                     return prevKeys.map(prevKey => {
+                        if (prevKey.letter === letterGuess) {
+                            return { ...prevKey, guessed: "right"}
+                        } else {
+                            return prevKey
+                        }
+                    })
+                })
+                setMysteryWord(prevWord => prevWord.map(prevChar => prevChar.letter === letterGuess ? {...prevChar, revealed: true} : prevChar))
+ 
+   
+            } else {
+                setKeys(prevKeys => {
+                    return prevKeys.map(prevKey => {
+                        if (prevKey.letter === letterGuess) {
+                            return { ...prevKey, guessed: "wrong"}
+                        } else {
+                            return prevKey
+                        }
+                    })
+                })
+                setLanguages(prevLanguages => 
+                    prevLanguages.map(prevLang => prevLang.id === wrongGuesses ? {...prevLang, isDead: true} : prevLang)
+                )
+                setWrongGuesses(prev => prev + 1)
+                setMessage("Nope!")
+                setMessageType("wrong")
+            }
+    }
+
+    React.useEffect(() => {
+        if (mysteryWord.every(char => char.revealed)) {
+            setMessage("You win!");
+            setMessageType("win");
+            setGameOver(true)
+          } else if (languages.every(lang => lang.isDead)) {
+            setMessage("You lose!")
+            setMessageType("lose")
+            setGameOver(true)
+            alert("Bummer! The word was: " + mysteryWordBase)
+          }
+    }, [mysteryWord, languages])
+
 
 
     return (
@@ -74,7 +115,7 @@ export default function Hangman() {
             <MessageBanner message={message} messageType={messageType}/>
             <LanguageList languages={languages}/>
             <GuessZone mysteryWord={mysteryWord}/>
-            <Keyboard keys={keys} guessLetter={guessLetter}/>
+            <Keyboard keys={keys} guessLetter={guessLetter} gameOver={gameOver}/>
         </main>
     )
 }
