@@ -26,6 +26,12 @@ export default function Hangman() {
 
     const mysteryWordBase = "Testing"
     const [mysteryWord, setMysteryWord] = React.useState(mysteryWordBase.toUpperCase().split('').map(char => ({letter: char, revealed: true, id: uuid()})))
+    const [wrongGuesses, setWrongGuesses] = React.useState(0)
+    const [gameOver, setGameOver] = React.useState(false)
+
+
+    const [mysteryWord, setMysteryWord] = React.useState(generate().toUpperCase().split('').map(char => ({letter: char, revealed: false, id: uuid()})))
+    const mysteryWordBase = mysteryWord.map(char => char.letter).join("")
 
     const [keys, setKeys] = React.useState([
         { letter: "A", guessed: "no", id: uuid()},
@@ -56,6 +62,10 @@ export default function Hangman() {
         { letter: "Z", guessed: "no", id: uuid()}
     ])
 
+    function guessLetter(letterGuess) {
+        if (mysteryWord.map(char => char.letter).includes(letterGuess)) {
+                setKeys(prevKeys => {
+                    return prevKeys.map(prevKey => {
 
 
     return (

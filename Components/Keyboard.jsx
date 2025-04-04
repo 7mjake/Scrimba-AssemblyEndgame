@@ -15,7 +15,8 @@ export default function Keyboard(props) {
                         "key-guessed-right" : key.guessed === "right"
                     })} 
                     key={key.id}
-                    onClick={() =>buttonHandler(key.letter)}>
+                    onClick={() =>buttonHandler(key.letter)}
+                    disabled={(key.guessed != "no") || (props.gameOver)}>
                         {key.letter}
                     </button>)
                 }

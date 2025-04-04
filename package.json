@@ -8,10 +8,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "classnames": "2.5.1",
+    "random-words": "^2.0.1",
     "react": "19.0.0-rc-a99d8e8d-20240916",
     "react-dom": "19.0.0-rc-a99d8e8d-20240916",
     "uuid": "11.1.0",
-    "classnames": "2.5.1",
     "vite": "latest"
   },
   "devDependencies": {
