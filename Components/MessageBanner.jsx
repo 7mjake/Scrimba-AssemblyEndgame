@@ -1,7 +1,18 @@
-export default function MessageBanner() {
+import classNames from 'classnames'
 
-    const message = "Farewell HTML & CSS 🫡"
-    const messageType = "message-wrong"
+export default function MessageBanner(props) {
 
-    return <h2 className={"message-banner message-wrong"}>{message}</h2>
+    const message = props.message
+    const messageType = props.messageType
+
+    return <h2 
+            className={classNames(
+                "message-banner",
+                {
+                    "message-wrong" : messageType === "wrong",
+                    "message-win"  : messageType === "win",
+                    "message-lose" : messageType === "lose"
+                }
+            )}
+        >{message}</h2>
 }

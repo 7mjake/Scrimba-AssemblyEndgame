@@ -1,19 +1,9 @@
 import classNames from 'classnames'
 
 
-export default function LanguageList() {
+export default function LanguageList(props) {
     
-    const languages = [
-        { title: "HTML", isDead: false, id: 0},
-        { title: "CSS", isDead: false, id: 1},
-        { title: "JavaScript", isDead: false, id: 2},
-        { title: "React", isDead: false, id: 3},
-        { title: "TypeScript", isDead: false, id: 4},
-        { title: "Node.js", isDead: false, id: 5},
-        { title: "Python", isDead: false, id: 6},
-        { title: "Ruby", isDead: false, id: 7},
-        { title: "Assembly", isDead: false, id: 8}
-    ];
+    const languages = props.languages
 
     const chipColors = [
         { bg: "#EA6B14", text: "white" },    // HTML
@@ -32,9 +22,8 @@ export default function LanguageList() {
     return (
         <div className={classNames("language-container")}>
             {languages.map(lang => (
-                <div style={{position: "relative"}}>
-                    <div 
-                    key={lang.id} 
+                <div style={{position: "relative"}} key={lang.id}>
+                    <div  
                     className={classNames("language-chip")}
                     style={{backgroundColor: chipColors[lang.id].bg, color: chipColors[lang.id].text, opacity: lang.isDead ? 0.1 : 1.0}}>
                         {lang.title}
